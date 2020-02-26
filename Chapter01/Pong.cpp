@@ -1,6 +1,5 @@
 #include "Pong.h"
 
-// TODO: Move to Pong
 const int thickness = 15;
 const float paddleH = 100.0f;
 
@@ -15,6 +14,23 @@ Pong::Pong()
 	mBallPos.y = 768.0f / 2.0f;
 	mBallVel.x = -200.0f;
 	mBallVel.y = 235.0f;
+}
+
+
+int * Pong::GetWindowPlacementArray()
+{
+	static int  r[4];
+	r[0] = 140;
+	r[1] = 140;
+	r[2] = 500;
+	r[3] = 400;
+
+	return r;
+}
+
+SDL_RendererFlags GetRendererOptions() {
+	static int f = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
+	return SDL_RendererFlags(f);
 }
 
 void Pong::ProcessInput(const Uint8* state)

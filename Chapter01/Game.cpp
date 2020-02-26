@@ -20,14 +20,14 @@ bool Game::Initialize()
 		return false;
 	}
 	
-	// Create an SDL Window
-	// TODO: Parse from Config
+	// Create an SDL Window from the game class
+	int * placements = mPong.GetWindowPlacementArray();
 	mWindow = SDL_CreateWindow(
 		"Game Programming in C++ (Chapter 1)", // Window title
-		100,	// Top left x-coordinate of window
-		100,	// Top left y-coordinate of window
-		1024,	// Width of window
-		768,	// Height of window
+		placements[0],	// Top left x-coordinate of window
+		placements[1],	// Top left y-coordinat	e of window
+		placements[2],	// Width of window
+		placements[3],	// Height of window
 		0		// Flags (0 for no flags set)
 	);
 
@@ -38,12 +38,11 @@ bool Game::Initialize()
 	}
 	
 	//// Create SDL renderer
-	// TODO: Config too! Maybe combine window and renderer? Makes sense eh ;)
-	// Common sdl wrapper? maybe SL? Faster? Or EsteeL.wow or Estl or i mean i unno. be a
+
 	mRenderer = SDL_CreateRenderer(
 		mWindow, // Window to create renderer for
 		-1,		 // Usually -1
-		SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
+		mPong.GetRendererOptions()
 	);
 
 	if (!mRenderer)

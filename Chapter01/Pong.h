@@ -13,6 +13,8 @@ class Pong
 {
 public:
 	Pong();
+	SDL_RendererFlags GetRendererOptions();
+	int * GetWindowPlacementArray();
 	void ProcessInput(const Uint8* state);
 	void UpdateGame(const float deltaTime);
 	void GenerateOutput(SDL_Renderer* mRenderer);
